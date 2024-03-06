@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  document-db:
+    image: postgres:15.4-alpine
+    container_name: document-db
+    restart: always
+    tty: true
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    expose:
+      - '5432:5432'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-auth:/var/lib/postgresql/data
+    networks:
+      - api
+  document-api:
+    container_name: document-api
+    build: .
+    image: document-api
+    restart: always
+    tty: true
+    ports:
+      - '8080:8080'
+    expose:
+      - '8080:8080'
+    networks:
+      - api
+    depends_on:
+      - document-db
+
+volumes:
+  postgres-auth:
+    driver: local
+networks:
+  api:
+    driver: bridge
