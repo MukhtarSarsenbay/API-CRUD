@@ -51,7 +51,7 @@ curl --location 'http://localhost:8080/documents' \
     "status": "okay"
 }'
 ```
-####PUT:
+#### PUT:
 This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. id=1).
 A successful PUT request typically returns a 200 OK, 201 Created, or 204 No Content response code.
 
@@ -64,7 +64,7 @@ curl --location --request PUT 'http://127.0.0.1:5000/documents/2' \
   "content": "Updated content of the document."
 }'
 ```
-####DELETE:
+#### DELETE:
 This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. id=1).
 A successful DELETE request typically returns a 200 OK, 202 Accepted, or 204 No Content response code.
 
